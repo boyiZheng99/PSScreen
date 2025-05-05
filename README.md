@@ -20,7 +20,6 @@ Fully supervised training on fully annotated datasets remains the dominant appro
 
 - Create servel folders (`scripts/exp/log`, `scripts/exp/code`, `scripts/exp/checkpoint`) to record experiment details.
 - Create a folder named `pretrained_model` under the `PSScreen` directory, and place the [pretrained weights of the ResNet](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EX8_ALmVwYhDqkrL5XOygBwB7vuvxbfONCTuqccne-77jw?e=TEXuNf) inside it.
-- 
 
 ## Dataset
 
@@ -35,8 +34,6 @@ PSScreen/
 ```
 
 ## Training
-
-
 
 ```sh
 bash ./scripts/run.sh
