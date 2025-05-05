@@ -16,4 +16,27 @@ Fully supervised training on fully annotated datasets remains the dominant appro
 - albumentations: 1.0.1
 - opencv-python
 
+## Dataset
+
+We provide preprocessed datasets, which you can download from here.
+
+## Training
+
+```sh
+bash ./scripts/run.sh
+```
+
+## Evaluation
+
+```sh
+bash ./scripts/test.sh
+```
+## Checkpoint
+
+The pretrained weights of the following models are available at this [link]
+
+## Acknowledgment
+
+The code is based on [HCP-MLR-PL](https://github.com/HCPLab-SYSU/HCP-MLR-PL/tree/main). Thanks for their contributions.
+
 
