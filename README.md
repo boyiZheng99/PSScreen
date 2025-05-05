@@ -41,6 +41,8 @@ bash ./scripts/run.sh
 
 ## Evaluation
 
+Set `resumeModel` in `test.sh` to the path where the checkpoint is saved.
+
 ```sh
 bash ./scripts/test.sh
 ```
