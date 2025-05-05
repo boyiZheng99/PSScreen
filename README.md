@@ -16,12 +16,27 @@ Fully supervised training on fully annotated datasets remains the dominant appro
 - albumentations: 1.0.1
 - opencv-python
 
+## Preliminary
+
+- Create servel folders (`scripts/exp/log`, `scripts/exp/code`, `scripts/exp/checkpoint`) to record experiment details.
+- Create a folder named `pretrained_model` under the `PSScreen` directory, and place the [pretrained weights of the ResNet](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EX8_ALmVwYhDqkrL5XOygBwB7vuvxbfONCTuqccne-77jw?e=TEXuNf) inside it.
+- 
+
 ## Dataset
 
 We provide preprocessed datasets, which you can download from [here](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EQcP3HJjQWFGmJML23jKabsBwa61wrrwgsLMx8VyKD8Hug?e=uWrBe1).
 
+Unzip the downloaded compressed file named `retinal_dataset`, and move the extracted `retinal_dataset` folder into the `PSScreen` directory. The folder should be structured as follows:
+```none
+PSScreen/
+|——retinal_dataset/
+│  |—— data
+|  |—— labels
+```
 
 ## Training
+
+
 
 ```sh
 bash ./scripts/run.sh
@@ -34,7 +49,7 @@ bash ./scripts/test.sh
 ```
 ## Checkpoint
 
-The pretrained weights of the following models are available at this [link]
+The pretrained weights of the following models are available at this [link](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/ETRhBmwPeIdGoeDka1DpiJ8Bd3pjiPiRM7s9D3GdZ-ZjsQ?e=L8NrkJ)
 
 ## Acknowledgment
 
