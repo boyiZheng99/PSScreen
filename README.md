@@ -63,7 +63,7 @@ Please see [crop the field of view](./datasets/threshold_crop.py), and [pad_imag
         └── RFMiD_dataset
 ```
 
-The `labels` for all the processed datasets can be downloaded from [here](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EVz15_rN8sZKo988VXjsiDQBwD1pNF4nR_kfzhy8mGHR0Q?e=6adQOV). 
+All processed labels can be found at `./retinal_dataset/labels`
 
 Create a folder named `retinal_dataset` under the `PSScreen` directory, and place the `data` and `labels` folders inside it.
 
