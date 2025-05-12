@@ -26,7 +26,7 @@ Data pre-processing consists of two main steps:
 - crop the field of view region.
 - pad the image with zeros.
 
-
+Please see [crop the field of view](./datasets/threshold_crop.py), and [pad_image_with_zero](./datasets/pad_image_with_zero.py)
 
 ## Training
 
