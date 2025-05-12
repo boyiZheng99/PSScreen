@@ -63,9 +63,11 @@ Please see [crop the field of view](./datasets/threshold_crop.py), and [pad_imag
         └── RFMiD_dataset
 ```
 
+All data from `ORIGA`, `HPMI`, and `APTOS` are used for testing, while only the test set from `RFMiD` is used for testing.
+
 All processed labels can be found at `./retinal_dataset/labels`
 
-Create a folder named `retinal_dataset` under the `PSScreen` directory, and place the `data` and `labels` folders inside it.
+Place the `data` folder inside `./retinal_dataset`.
 
 ## Training
 
