@@ -28,6 +28,45 @@ Data pre-processing consists of two main steps:
 
 Please see [crop the field of view](./datasets/threshold_crop.py), and [pad_image_with_zero](./datasets/pad_image_with_zero.py)
 
+ The image folder should be structured as:
+
+ ```none
+.
+└── data/
+    ├── train/
+    │   ├── ADAM_trainset
+    │   ├── CAT_trainset
+    │   ├── DDR_trainset
+    │   ├── HR_trainset
+    │   ├── ODIR_trainset
+    │   ├── PALM_trainset
+    │   └── REFUGE_trainset
+    ├── valid/
+    │   ├── ADAM_validset
+    │   ├── CAT_validset
+    │   ├── DDR_validset
+    │   ├── HR_validset
+    │   ├── PALM_validset
+    │   └── REFUGE_validset
+    └── test/
+        ├── ADAM_testset
+        ├── APTOS_dataset
+        ├── CAT_testset
+        ├── DDR_testset
+        ├── HPMI_dataset
+        ├── HR_testset
+        ├── ODIR200x3_testset
+        ├── ODIR_testset
+        ├── ORIGA_dataset
+        ├── PALM_testset
+        ├── REFUGE_testset
+        └── RFMiD_dataset
+```
+
+The `labels` for all the processed datasets can be downloaded from [here](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EVz15_rN8sZKo988VXjsiDQBwD1pNF4nR_kfzhy8mGHR0Q?e=6adQOV). 
+
+Create a folder named `retinal_dataset` under the `PSScreen` directory, and place the `data` and `labels` folders inside it.
+
 ## Training
 
 ```sh
