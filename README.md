@@ -2,10 +2,6 @@
 
 This repository is the official implementation of paper: PSScreen: Partially Supervised Multiple Retinal Disease Screening
 
-Fully supervised training on fully annotated datasets remains the dominant approach for developing multiple retinal disease screening models; however, acquiring such datasets is costly and demands expert medical annotation. An effective alternative is to leverage multiple open-access partially labeled datasets to train a universal screening model. However, two key challenges must be addressed: domain shifts among training data result in unreliable pseudo labels, and the model fails to recognize out-of-distribution data. We propose PSScreen, a novel partially supervised two-stream network for multiple retinal disease screening. Specifically, one stream retains deterministic feature maps, while the other adds uncertainty estimation to representations to generate probabilistic feature maps. With textual guidance, global feature maps are decoupled into disease-wise features and aligned across streams, enabling the model to generalize to various and even unseen domains, thus addressing both challenges simultaneously. Furthermore, to prevent the loss of semantic discriminative information in probabilistic feature maps from compromising pseudo label consistency regularization, we introduce a self-distillation for consistency. Experiments show that our method significantly enhances performance and achieves state-of-the-art results on multiple in-domain and out-of-domain datasets.
-
-![Illustration of PSScreen](./images/framework.png)
-
 ## Environment
 
 - python: 3.9.19
@@ -21,17 +17,16 @@ Fully supervised training on fully annotated datasets remains the dominant appro
 - Create servel folders (`scripts/exp/log`, `scripts/exp/code`, `scripts/exp/checkpoint`) to record experiment details.
 - Create a folder named `pretrained_model` under the `PSScreen` directory, and place the [pretrained weights of the ResNet](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EX8_ALmVwYhDqkrL5XOygBwB7vuvxbfONCTuqccne-77jw?e=TEXuNf) inside it.
 
-## Dataset
+## Dataset 
 
-We provide preprocessed datasets, which you can download from [here](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EQcP3HJjQWFGmJML23jKabsBwa61wrrwgsLMx8VyKD8Hug?e=uWrBe1).
+We use [DDR](https://github.com/nkicsl/DDR-dataset), [ADAM](https://drive.google.com/file/d/1Uz5x0aqXb0aecjzNWQ4522oCxaRDZxBt/view), [PALM](https://drive.google.com/file/d/14XWD6kX0dVRfAyEc7FkZGKZibWEkvnyv/view), [Kaggle-CAT](https://www.kaggle.com/datasets/jr2ngb/cataractdataset),[Kaggle-HR](https://www.kaggle.com/datasets/harshwardhanfartale/hypertension-and-hypertensive-retinopathy-dataset),[REFUGE2](https://drive.google.com/file/d/1DspRzDqypeBOxZnWPQxmXprNVmJwkBRJ/view), [APTOS](https://www.kaggle.com/competitions/aptos2019-blindness-detection/data),[ORIGA<sup>light</sup>](https://pubmed.ncbi.nlm.nih.gov/21095735/),[RFMiD](https://riadd.grand-challenge.org/download-all-classes/),[HPMI](https://figshare.com/articles/dataset/HPMI_A_retinal_fundus_image_dataset_for_identification_of_high_and_pathological_myopia_based_on_deep_learning/24800232?file=49305304),[ODIR](https://odir2019.grand-challenge.org/dataset/),We crop the field of view region from the fundus image and pad it with zeros so that the short and long sides are of equal length.
 
-Unzip the downloaded compressed file named `retinal_dataset`, and move the extracted `retinal_dataset` folder into the `PSScreen` directory. The folder should be structured as follows:
-```none
-PSScreen/
-|——retinal_dataset/
-│  |—— data
-|  |—— labels
-```
+Data pre-processing consists of two main steps:
+
+- crop the field of view region.
+- pad the image with zeros.
+
+
 
 ## Training
 
