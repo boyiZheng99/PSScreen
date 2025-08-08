@@ -1,4 +1,4 @@
-# PSScreen: Partially Supervised Multiple Retinal Disease Screening
+# [BMVC 2025 Oral] PSScreen: Partially Supervised Multiple Retinal Disease Screening
 
 This repository is the official implementation of paper: PSScreen: Partially Supervised Multiple Retinal Disease Screening
 
