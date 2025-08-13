@@ -43,7 +43,7 @@ def main():
     show_args(args)
 
     # Create dataloader
-    logger.info("==> Creating dataloader...")
+    logger.info("==> Creating dataloader...")  #load train,test, and valid dataset
     train_loader = Balanced_dataloader(args)
     test_loader = test_dataloader(args)
     valid_loader = valid_dataloader(args)
@@ -54,26 +54,26 @@ def main():
 
     WordFile = get_word_file()  #load disease description embedding
     model = PSScreen(WordFile,
-                 classNum=args.classNum,alpha=args.alpha)
+                 classNum=args.classNum,alpha=args.alpha)   #load PSScreen
 
     if args.pretrainedModel != 'None':
         logger.info("==> Loading pretrained model...")
-        model = load_pretrained_model(model, args)
+        model = load_pretrained_model(model, args)  #load pretrained backbone
 
     if args.resumeModel != 'None':
         logger.info("==> Loading checkpoint...")
-        checkpoint = torch.load(args.resumeModel, map_location='cpu')
+        checkpoint = torch.load(args.resumeModel, map_location='cpu')    
         best_f1, args.startEpoch = checkpoint['best_f1'], checkpoint['best_epoch']
-        model.load_state_dict(checkpoint['state_dict'])
+        model.load_state_dict(checkpoint['state_dict'])                              # Load the saved checkpoint
         logger.info("==> Checkpoint epoch: {0}, f1: {1}".format(args.startEpoch, best_f1))
 
     model.cuda()
     logger.info("==> Done!\n")
 
     criterion = {
-                 'MMDLoss' : MMDLoss().cuda(),
-                 'BCELoss': partial_BCELoss(reduce=True, size_average=True).cuda(),
-                 'KLloss': Partial_MultiLabelKLDivergenceLoss().cuda(),
+                 'MMDLoss' : MMDLoss().cuda(),                   #Feature distillation loss
+                 'BCELoss': partial_BCELoss(reduce=True, size_average=True).cuda(),  #classification loss for GT and pseudo labels
+                 'KLloss': Partial_MultiLabelKLDivergenceLoss().cuda(),                 #self-distillation loss
                  }
 
     for p in model.backbone.parameters():
@@ -135,7 +135,7 @@ def Train(train_loader, model, criterion, optimizer, args, scheduler,epoch):
         input, target = input.cuda(), target.float().cuda()
         data_time.update(time.time() - end)
         with torch.autograd.set_detect_anomaly(True):
-            if epoch<args.gen_psl_epoch:
+            if epoch<args.gen_psl_epoch:   # The pseudo-label loss is not computed in the early training stage
                 output,output_aug,semantic_feature,semantic_feature_aug = model(input)
                 
                 loss1_ = criterion['BCELoss'](output, target)
