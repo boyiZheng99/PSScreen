@@ -43,8 +43,8 @@ class partial_BCELoss(nn.Module):  #For cross entropy loss for known classes and
         neg_weight_mask[0] = negative_weight[0]  
 
 
-        weighted_positive_loss = pos_weight_mask * positive_mask * positive_loss  #Only compute loss on positive classes
-        weighted_negative_loss = neg_weight_mask * negative_mask * negative_loss  #Only compute loss on negative classes
+        weighted_positive_loss = pos_weight_mask * positive_mask * positive_loss  #Only compute loss on positive classes.
+        weighted_negative_loss = neg_weight_mask * negative_mask * negative_loss  #Only compute loss on negative classes.
 
 
         loss = weighted_positive_loss + weighted_negative_loss  
@@ -77,7 +77,7 @@ class Partial_MultiLabelKLDivergenceLoss(nn.Module):  #Compute the self-distilla
 
 
         kl_loss = mask * (target_probs * (torch.log(target_probs + self.eps) - torch.log(pred_probs + self.eps)) +
-                          (1 - target_probs) * (torch.log(1 - target_probs + self.eps) - torch.log(1 - pred_probs + self.eps)))  #Only compute KL loss on labeled classes
+                          (1 - target_probs) * (torch.log(1 - target_probs + self.eps) - torch.log(1 - pred_probs + self.eps)))  #Only compute KL loss on labeled classes.
 
 
         if self.reduction == 'mean':
@@ -90,7 +90,7 @@ class Partial_MultiLabelKLDivergenceLoss(nn.Module):  #Compute the self-distilla
         return kl_loss
 
 
-class MMDLoss(nn.Module):  #Compute the feature-distillation loss
+class MMDLoss(nn.Module):  #Compute the feature-distillation loss.
   
     def __init__(self, kernel_type='rbf', kernel_mul=2.0, kernel_num=5, fix_sigma=None, **kwargs):
         super(MMDLoss, self).__init__()
@@ -127,7 +127,7 @@ class MMDLoss(nn.Module):  #Compute the feature-distillation loss
         B, C, D = source.shape
         mmd_loss_list = []
         
-        for c in range(C):     #compute channel-wise MMD loss
+        for c in range(C):     #Compute the channel-wise MMD loss.
             source_c = source[:, c, :]  
             target_c = target[:, c, :]  
             
