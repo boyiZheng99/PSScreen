@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class partial_BCELoss(nn.Module):
+class partial_BCELoss(nn.Module):  #For cross entropy loss for known classes and pseudo label consistency loss
 
     def __init__(self, margin=0.0, reduce=None, size_average=None):
         super(partial_BCELoss, self).__init__()
@@ -22,8 +22,8 @@ class partial_BCELoss(nn.Module):
     def forward(self, input, target):
         input, target = input.float(), target.float()
 
-        positive_mask = (target > self.margin).float()  
-        negative_mask = (target < -self.margin).float() 
+        positive_mask = (target > self.margin).float()    #Record the positions of positive classes.
+        negative_mask = (target < -self.margin).float()   #Record the positions of negaive classes.
 
         positive_loss = self.BCEWithLogitsLoss(input, target)
         negative_loss = self.BCEWithLogitsLoss(-input, -target)
@@ -43,8 +43,8 @@ class partial_BCELoss(nn.Module):
         neg_weight_mask[0] = negative_weight[0]  
 
 
-        weighted_positive_loss = pos_weight_mask * positive_mask * positive_loss
-        weighted_negative_loss = neg_weight_mask * negative_mask * negative_loss
+        weighted_positive_loss = pos_weight_mask * positive_mask * positive_loss  #Only compute loss on positive classes
+        weighted_negative_loss = neg_weight_mask * negative_mask * negative_loss  #Only compute loss on negative classes
 
 
         loss = weighted_positive_loss + weighted_negative_loss  
@@ -60,7 +60,7 @@ class partial_BCELoss(nn.Module):
         return loss
 
 
-class Partial_MultiLabelKLDivergenceLoss(nn.Module):
+class Partial_MultiLabelKLDivergenceLoss(nn.Module):  #Compute the self-distillation loss
    
     def __init__(self, reduction='mean', eps=1e-10):
         super(Partial_MultiLabelKLDivergenceLoss, self).__init__()
@@ -73,11 +73,11 @@ class Partial_MultiLabelKLDivergenceLoss(nn.Module):
         pred_probs = torch.sigmoid(pred_logits)
         target_probs = torch.sigmoid(target_logits)
 
-        mask = (real_label!=0).float()
+        mask = (real_label!=0).float()  #Record the positions of labeled classes.
 
 
         kl_loss = mask * (target_probs * (torch.log(target_probs + self.eps) - torch.log(pred_probs + self.eps)) +
-                          (1 - target_probs) * (torch.log(1 - target_probs + self.eps) - torch.log(1 - pred_probs + self.eps)))
+                          (1 - target_probs) * (torch.log(1 - target_probs + self.eps) - torch.log(1 - pred_probs + self.eps)))  #Only compute KL loss on labeled classes
 
 
         if self.reduction == 'mean':
@@ -90,7 +90,7 @@ class Partial_MultiLabelKLDivergenceLoss(nn.Module):
         return kl_loss
 
 
-class MMDLoss(nn.Module):
+class MMDLoss(nn.Module):  #Compute the feature-distillation loss
   
     def __init__(self, kernel_type='rbf', kernel_mul=2.0, kernel_num=5, fix_sigma=None, **kwargs):
         super(MMDLoss, self).__init__()
@@ -127,7 +127,7 @@ class MMDLoss(nn.Module):
         B, C, D = source.shape
         mmd_loss_list = []
         
-        for c in range(C):  
+        for c in range(C):     #compute channel-wise MMD loss
             source_c = source[:, c, :]  
             target_c = target[:, c, :]  
             
