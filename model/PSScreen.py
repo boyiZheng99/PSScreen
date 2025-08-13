@@ -73,11 +73,11 @@ class PSScreen(nn.Module):
         result = self.classifiers(outputSemantic)  
         return result, semantic_feature
 
-    def cal_pseudolabel(self,target,result):
+    def cal_pseudolabel(self,target,result):  #generate pseudo labels for unknown classes
         pseudolabel = torch.zeros_like(target)
         mask = torch.zeros_like(target)
         mask[~((target == 1) | (target == -1))] = 1
-        result_clone = result.detach() #用来计算伪标签
+        result_clone = result.detach() 
         result_clone = self.sigmoid(result_clone)
         pseudolabel[result_clone > self.alpha] = 1
         pseudolabel[result_clone < 1-self.alpha] = -1
