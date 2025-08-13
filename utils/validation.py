@@ -75,7 +75,7 @@ def evaluate(dataloader, net, args,if_valid,if_final_test):
     Softmax = torch.nn.Softmax(dim=1)
     net.eval()
     with torch.no_grad():
-        for dataset_name, dataset_info in dataloader.items():
+        for dataset_name, dataset_info in dataloader.items():    # Process the test and validation datasets sequentially, one by one.
             all_output=[]
             all_label=[]
             print(f"Processing {dataset_name}")
