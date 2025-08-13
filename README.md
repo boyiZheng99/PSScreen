@@ -82,7 +82,7 @@ bash ./scripts/test.sh
 | ResNet-101  | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EUZNyL4tteZGpmbtQ3kuvQQBbz_J4R2rEBt_mSWwahD5ew?e=3QKkeR) |
 | ConvNeXt-T | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/ESnMg3AYovpOllNEvtpp-z4Bo4YvQZi6j1BbNr8xxbAvPw?e=BREY9Y) |
 | ConvNeXt V2-T  | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EZJRJ9kP3OREsD_uN8E0QScBFTO0p_OdT_Nv-qs2Oq4stQ?e=VEQggH) |
-| swin-T   | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EfkUiHIWNoNNuOAsWqgZlMEB0e1eo2swnr8s7QIyZIdC-g?e=GmvWFp) |
+| Swin-T   | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EfkUiHIWNoNNuOAsWqgZlMEB0e1eo2swnr8s7QIyZIdC-g?e=GmvWFp) |
 | VMamba-T   | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EVWdTzbSL-5Mr8kx8lRPzmEBaIFaF4GE8pKQK2ozq4ndYQ?e=nqABEo) |
 
 
