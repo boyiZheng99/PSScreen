@@ -65,12 +65,12 @@ class PSScreen(nn.Module):
     
 
     def process_feature_map(self, feature_map):
-        batchSize = feature_map.size(0)
+        batchSize = feature_map.size(0)   # input global feature
         if feature_map.size(1) != self.imageFeatureDim:
-            feature_map = self.changeChannel(feature_map)
-        semantic_feature = self.SemanticDecoupling(feature_map, self.wordFeatures)[0]    #(batchSize, classNum, outputDim)
+            feature_map = self.changeChannel(feature_map)   # Adjust the number of channels
+        semantic_feature = self.SemanticDecoupling(feature_map, self.wordFeatures)[0]    # input to the semantic decoupling, shape:(batchSize, classNum, outputDim)
         outputSemantic = torch.tanh(self.fcSemantic(semantic_feature))                              
-        result = self.classifiers(outputSemantic)  
+        result = self.classifiers(outputSemantic)  # input to the classifier
         return result, semantic_feature
 
     def cal_pseudolabel(self,target,result):  #generate pseudo labels for unknown classes
