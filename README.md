@@ -86,7 +86,7 @@ bash ./scripts/test.sh
 | PSScreen-VMamba-T   | [Download](https://unioulu-my.sharepoint.com/:u:/g/personal/bzheng24_univ_yo_oulu_fi/EVWdTzbSL-5Mr8kx8lRPzmEBaIFaF4GE8pKQK2ozq4ndYQ?e=nqABEo) |
 
 ## Acknowledgements
-This project builds upon the open-source repositories [SST](https://github.com/HCPLab-SYSU/HCP-MLR-PL). We thank the authors for their great work and for making the code publicly available.
+This project builds upon the open-source repository [SST](https://github.com/HCPLab-SYSU/HCP-MLR-PL). We thank the authors for their great work and for making the code publicly available.
 ## Contact
 If you have any questions, please feel free to contact me (boyi.zheng@oulu.fi).
 
