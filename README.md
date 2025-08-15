@@ -87,6 +87,20 @@ bash ./scripts/test.sh
 
 ## Acknowledgements
 This project builds upon the open-source repository [SST](https://github.com/HCPLab-SYSU/HCP-MLR-PL). We thank the authors for their great work and for making the code publicly available.
+
+## Citation
+```bibtex
+@misc{zheng2025psscreenpartiallysupervisedmultiple,
+      title={PSScreen: Partially Supervised Multiple Retinal Disease Screening}, 
+      author={Boyi Zheng and Qing Liu},
+      year={2025},
+      eprint={2508.10549},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2508.10549}, 
+}
+```
+
 ## Contact
 If you have any questions, please feel free to contact me (boyi.zheng@oulu.fi).
 
